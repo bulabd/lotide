@@ -36,4 +36,6 @@ const assertArraysEqual = function(actual, expected) {
   }
 };
 
-assertArraysEqual(map(words, word => word[0]), ['g', 'c', 't', 'm', 't']);
+// assertArraysEqual(map(words, word => word[0]), ['g', 'c', 't', 'm', 't']);
+
+module.exports = map;
