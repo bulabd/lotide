@@ -7,6 +7,8 @@ const eqObjects = function(object1, object2) {
   for (let key of keyArr1) {
     if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
       return eqArrays(object1[key], object2[key]);
+    } else if (typeof object1[key] === 'object' && typeof object2[key] === 'object') {
+      return eqObjects(object1[key], object2[key]);
     } else {
       if (object1[key] !== object2[key]) {
         return false;
@@ -32,5 +34,9 @@ const eqObjects = function(object1, object2) {
 
 // console.log(eqObjects(cd, cd2)); // => false
 // console.log(eqArrays(cd["d"], cd2["d"])); // => false
+
+// console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }));
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }));
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }));
 
 module.exports = eqObjects;
